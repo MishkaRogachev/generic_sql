@@ -1,6 +1,5 @@
 #include "sql_query.h"
 
-
 #include <QDebug>
 #include <QSqlError>
 
@@ -18,6 +17,11 @@ void SqlQuery::prepare(const QString& query)
 bool SqlQuery::exec(const QString& query)
 {
     return query.isEmpty() ? m_query.exec() : m_query.exec(query);
+}
+
+bool SqlQuery::first()
+{
+    return m_query.first();
 }
 
 bool SqlQuery::next()
@@ -58,6 +62,16 @@ void SqlQuery::bindValue(const QString& placeholer, const QVariant& value)
 QString SqlQuery::lastQuery() const
 {
     return m_query.lastQuery();
+}
+
+int SqlQuery::size() const
+{
+    return m_query.size();
+}
+
+bool SqlQuery::noError() const
+{
+    return m_query.lastError().type() == QSqlError::NoError;
 }
 
 QString SqlQuery::errorString() const

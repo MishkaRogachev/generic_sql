@@ -18,6 +18,7 @@ public:
 
     virtual void prepare(const QString& query) = 0;
     virtual bool exec(const QString& query = QString()) = 0;
+    virtual bool first() = 0;
     virtual bool next() = 0;
 
     virtual void clear() = 0;
@@ -29,6 +30,8 @@ public:
     virtual void bindValue(const QString&, const QVariant& value) = 0;
 
     virtual QString lastQuery() const = 0;
+    virtual bool noError() const = 0;
+    virtual int size() const = 0;
     virtual QString errorString() const = 0;
 };
 

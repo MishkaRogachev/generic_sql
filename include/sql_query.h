@@ -19,6 +19,7 @@ public:
 
     void prepare(const QString& query) override;
     bool exec(const QString& query = QString()) override;
+    bool first() override;
     bool next() override;
 
     void clear() override;
@@ -30,6 +31,8 @@ public:
     void bindValue(const QString& placeholer, const QVariant& value) override;
 
     QString lastQuery() const override;
+    bool noError() const override;
+    int size() const override;
     QString errorString() const override;
 
 private:
